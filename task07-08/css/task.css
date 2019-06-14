@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+.nav {
+    width: 100%;
+    background: #333333;
+    height: 80px;
+    color: #fff;
+}
+
+.logo {
+
+    line-height: 80px;
+    margin-left: 10%;
+    font-size: 1.5rem;
+}
+
+.jump {
+    float: right;
+    margin-right: 10%;
+}
+
+.jump>a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.subject {
+    width: 100%;
+}
+
+.first {
+    background: #66bb33;
+    height: 260px;
+    position: relative;
+}
+
+.index {
+    list-style: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 10%;
+    height: 38px;
+}
+
+.index>li {
+    display: inline-block;
+    height: 38px;
+    width: 35px;
+    background: #b2dd99;
+    margin-left: 3px;
+    text-align: center;
+    line-height: 38px;
+}
+
+#special {
+    background: #fff;
+    height: 38px;
+}
+
+.second-nav {
+    height: 80px;
+    border-bottom: 1px solid rgba(102, 102, 102, 0.2);
+    position: relative;
+}
+
+.nav-option {
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+}
+
+.nav-option>li {
+    float: left;
+    list-style: none;
+    padding: 15px 30px 15px 30px;
+    background: #eeeeee;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    box-sizing: border-box;
+    border: 1px solid rgba(102, 102, 102, 0.2);
+}
+
+.nav-option>li:first-child {
+    background: #fff;
+    border-bottom: none;
+}
+
+.items {
+    width: 1200px;
+    margin: 10px auto 10px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.items-1,
+.items-2,
+.items-3,
+.items-4,
+.items-5,
+.items-6,
+.items-7,
+.items-8,
+.items-9,
+.items-10
+ {
+    height: 220px;
+    border: 1px solid rgba(102, 102, 102, 0.2);
+    text-align: center;
+    line-height: 220px;
+
+}
+
+.items-1 {
+    flex: 1.2 0 ; min-width: 30%; 
+}
+
+.items-2 {
+    margin-left: 8px;
+    flex: 1.5 0 ;min-width: 30%; 
+
+}
+
+.items-3 {
+    margin-left: 8px;
+    flex: 1 0 ;min-width: 30%; 
+}
+
+.items-4,
+.items-5,
+.items-6,
+.items-7 {
+    flex: 1 0 ;min-width: 250px; margin:10px 0 10px 0; 
+} 
+
+.items-5,
+.items-6,
+.items-7 {
+    margin-left: 8px; 
+} 
+.items-8,
+.items-9,
+.items-10 {
+    min-width: 30%; flex: 1 0; 
+}
+.items-9,
+.items-10 {
+    margin-left: 8px;
+}
+.items-10 {
+    flex: 1.2; 
+}
+.foot {
+    background: #666666;
+    height: 120px;
+    margin-top: 20px;
+    color: #fff;
+    text-align: center;
+    padding-top:20px;
+}
