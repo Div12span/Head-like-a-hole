@@ -1,0 +1,712 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 去除元素自带的边距，由自己定，这样好控制一些 */
+.head-banner {
+    width: 100%;
+    height: 900px;
+    background-image: url(../img/head-banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* 这里遇到图片不能铺满我的显示器浏览器界面，运用背景-size的属性可以解决，属性值选cover最合适 */
+.mask {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .head-banner mask {
+   
+} */
+
+/* 运用flex布局自适应居中，align-items:center垂直居中，justify-content:center;水平居中， */
+.head-des {
+    width: 970px;
+    margin-top: -40px;
+}
+
+/* top负数是是因为Hello World所占据的行高使得整个section虽然实际居中了但是看上去没有达到效果 */
+/* 感觉给一个固定宽度的块装头部内容要好一点，可能不需要宽度也能居中，因为上面flex布局的原因 */
+.head-art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 设置弹性盒子排列方向为交叉轴让文字自己竖直排列不用换行，但是现在文字的align-items:center变成了水平居中功能 */
+.head-art>span:first-child {
+    color: #fff;
+    font-size: 52px;
+}
+
+.head-art>span+span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    margin-top: 7px;
+}
+
+.head-art>span:nth-child(2) {
+    margin-top: 40px;
+}
+
+/* 让文字分成三行，居中 */
+.head-search {
+    width: 970px;
+    height: 250px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 输入框也使用flex-direction: column;align-items: center; justify-content: center;达到水平垂直内容居中 */
+.head-search>span:first-child {
+    color: #fff;
+    font-size: 16px;
+}
+
+.head-search>span:nth-child(2) {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.head-sea-box {
+    margin-top: 44px;
+}
+
+.head-sea-box>input {
+    width: 292px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-right: 32px;
+    padding-left: 24px;
+    background-color: transparent;
+}
+
+/* background-color: transparent;设置input框背景颜色为透明 */
+.search1::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #fff;
+}
+
+.search2::-webkit-input-placeholder {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.head-sea-box>span {
+    display: inline-block;
+    width: 125px;
+    height: 50px;
+    background: #fff;
+    text-align: center;
+    line-height: 50px;
+}
+
+.head-sea-box>span a {
+    text-decoration: none;
+    color: #141414;
+}
+
+.awesome {
+    height: 710px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.awesome>span:first-child {
+    font-size: 13px;
+    color: #141414;
+    line-height: 28px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.awesome>span+span {
+    font-size: 42px;
+    color: #141414;
+    font-weight: 300;
+}
+
+.awesome-des {
+    margin-top: 60px;
+    width: 1000px;
+    height: 280px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.awesome-des>section {
+    overflow-x: hidden;
+}
+
+.awesome-des>section img {
+    float: left;
+    margin-top: 4px;
+}
+
+.awesome-des>section article {
+    float: left;
+    margin-left: 20px;
+    width: 365px;
+}
+
+.awesome-des h4 {
+    font-size: 20px;
+    color: #141414;
+    margin-bottom: 20px;
+}
+
+.awesome-des span {
+    font-size: 16px;
+    color: rgba(20, 20, 20, 0.7);
+}
+
+.policeies {
+    background: url(../img/policis.jpg);
+    background-repeat: no-repeat;
+    height: 800px;
+    background-size: cover;
+}
+
+.policeies-mask {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.policeies-des>article {
+    width: 374px;
+}
+
+.policeies-des>article p {
+    font-size: 42px;
+    line-height: 52px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.bfc {
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.policeies-des>article span {
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300
+}
+
+.policeies-des>div {
+    margin-top: 59px;
+    width: 505px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.policeies-box1 {
+    width: 240px;
+    height: 60px;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding-left: 35px;
+}
+
+.policeies-box1::-moz-placeholder {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #141414;
+}
+
+.policeies-box1::-webkit-input-placeholder {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #141414;
+
+}
+
+.policeies-box2 {
+    width: 235px;
+    height: 60px;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    padding-left: 35px;
+}
+
+.policeies-box1::-moz-placeholder {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.policeies-box2::-webkit-input-placeholder {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.policeies-data {
+    height: 600px;
+    width: 645px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    background-color: transparent;
+    padding: 28px 0 28px 60px;
+    margin-left: 450px;
+}
+
+.data-box {
+    width: 585px;
+    height: 542px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.data-box>p {
+    font-size: 27px;
+    font-weight: 400;
+    margin-right: 108px;
+}
+
+.data-box>span {
+    font-size: 14px;
+    color: rgba(20, 20, 20, 0.5);
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+
+.data-des {
+    margin-top: 66px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.data-des>div {
+    margin-right: 26px;
+    height: 252px;
+    width: 177px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    /* box-shadow: 1px 1px rgba(20, 20, 20, 0.65), -1px -1px rgba(20, 20, 20, 0.65); */
+}
+
+.data-des>div:last-child {
+    width: 122px;
+    margin-right: 0;
+    /* box-shadow: 0px 1px rgba(20, 20, 20, 0.65); */
+}
+
+.data-des>div header {
+    height: 137px;
+    width: 100%;
+    text-align: center;
+    line-height: 137px;
+}
+
+.data-des>div header img {
+    vertical-align: middle;
+}
+
+.data-des>div:last-child header {
+    text-align: right;
+}
+
+.teach {
+    background: #773fc0;
+}
+
+.guide {
+    background: #18c5cb;
+}
+
+.example {
+    background: #2da2f8;
+}
+
+.data-des>div footer {
+    width: 100%;
+    height: calc(100% - 137px);
+    padding-left: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.data-des>div footer h5 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.data-des>div footer article {
+    width: 144px;
+    margin-top: 16px;
+}
+
+.data-des>div footer article:last-child {
+    width: 109px;
+}
+
+.data-des>div footer p {
+    font-size: 12px;
+    color: rgba(20, 20, 20, 0.4)
+}
+
+.paroduct {
+    width: 100%;
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(20, 20, 20, 0.1);
+}
+
+.paroduct>p {
+    font-size: 42px;
+    line-height: 52px;
+    color: #141414;
+}
+
+.paroduct-des {
+    margin-top: 78px;
+    width: 952px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paroduct-des>section {
+    text-align: center;
+}
+
+.paroduct-des>section article {
+    width: 251px;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(20, 20, 20, 0.5);
+    margin-top: 33px;
+}
+
+.paroduct-des>section:nth-child(2) article {
+    width: 264px;
+}
+
+.paroduct-des>section:nth-child(3) article {
+    width: 265px;
+}
+
+.designed {
+    width: 100%;
+    height: 1000px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(20, 20, 20, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.designed>div {
+    height: 350px;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.designed>div:last-child {
+    margin-top: 79px;
+}
+
+.designed>div article {
+    align-self: center;
+}
+
+.designed>div article:first-child {
+    width: 309px;
+}
+
+.designed>div article:last-child {
+    width: 324px;
+}
+
+.designed>div article h5 {
+    font-size: 20px;
+    line-height: 32px;
+    color: #141414;
+}
+
+.designed>div article p {
+    font-size: 16px;
+    line-height: 28px;
+    color: rgba(20, 20, 20, 0.6);
+    margin-top: 22px;
+}
+
+.crew {
+    height: 1083px;
+    border-bottom: 1px solid rgba(20, 20, 20, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.crew>h4 {
+    font-size: 42px;
+    line-height: 52px;
+    font-weight: 300;
+    color: #141414;
+}
+
+.crew>article {
+    text-align: center;
+    width: 701px;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(20, 20, 20, 0.5);
+    margin-top: 27px;
+}
+
+.crew-photo {
+    width: 52%;
+    height: 720px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    margin-top:55px;
+}
+
+.crew-photo>div {
+    width: 470px;
+    height: 340px;
+    background: url(../img/products/张思远大.jpg) center no-repeat;
+    position: relative;
+}
+
+.crew-photo>div>img {
+    position: absolute;
+    right: 0;
+    margin-right: 82px;
+    top: 199px;
+}
+
+.crew-mask {
+    width: 100%l;
+    height: 100%;
+    background: rgba(20, 20, 20, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.crew-mask>h5 {
+    font-size: 20px;
+    line-height: 32px;
+    color: #fff;
+}
+
+.crew-mask>article {
+    font-size: 12px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 15px;
+}
+
+.crew-logo {
+    margin-top: 36px;
+    height: 54px;
+    width: 245px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.crew-logo>div {
+    height: 54px;
+    width: 51px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 51px;
+}
+
+.crew-logo>div img {
+    vertical-align: middle;
+}
+
+.contacts {
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts>div {
+    width: 470px;
+    height: 560px;
+    box-sizing: border-box;
+    border: 1px solid rgba(20, 20, 20, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacts>div h5 {
+    font-size: 16px;
+    line-height: 32px;
+    letter-spacing: 1px;
+    color: #141414;
+    margin-bottom: 42px;
+}
+
+.contacts>div input {
+    width: 370px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid rgba(38, 35, 33, 0.2);
+    border-radius: 2px;
+    margin-bottom: 29px;
+}
+
+.contacts>div>input:nth-child(4) {
+    height: 144px;
+}
+
+.contacts>div input:last-child {
+    border: none;
+    background: #141414;
+}
+
+.contacts>div input::-webkit-input-placeholder {
+    font-size: 14px;
+    line-height: 26px;
+    color: rgba(20, 20, 20, 0.5);
+    padding: 21px;
+}
+.contacts>div>input:nth-child(4)::-webkit-input-placeholder {
+    
+}
+
+.contacts>div input:last-child::-webkit-input-placeholder {
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+}
+
+.contacts>article {
+    margin-left: 160px;
+}
+
+.contacts>article h2 {
+    font-size: 42px;
+    line-height: 52px;
+    color: #141414;
+    font-weight: 400;
+}
+
+.contacts>article>p {
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(20, 20, 20, 0.7);
+    width: 357px;
+    margin-top: 27px;
+    margin-bottom: 66px;
+}
+
+.contacts>article>div {
+    margin-bottom: 27px;
+    display: flex;
+}
+
+.contacts>article>div p {
+    font-size: 16px;
+    line-height: 26px;
+    color: #141414;
+    margin-left: 8px;
+}
+.icon  {
+    width: 25px; height: 25px; padding-top: 6px;
+}
+
+.con2 {
+    width: 24px; height: 24px; margin-top:5px; margin-right: 2px;
+}
+
+.con3 {
+    width: 24px; height:19px;margin-top:5px; margin-right: 3px;
+}
+.info {
+    height: 410px;
+    background: #141414;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info>article h6 {
+    font-size: 14px;
+    line-height: 28px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.info>article p {
+    font-size: 16px;
+    line-height: 46px;
+    color: rgba(255, 255, 255, 0.3);
+
+}
+
+.info>article:last-child p {
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 0.4);
+}
+.info>article:last-child div {
+    margin-top:28px;
+    width: 228px;
+    height: 18px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 90px;
+}
