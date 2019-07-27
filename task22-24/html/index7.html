@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arrTwo = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+		//将上面的二维数组，按照每个元素中第二个数从大到小的顺序进行排序输出，输出结果应该为
+		var mapped = arrTwo.map(function(el,i){
+			return {index:i,value:el[1]}
+		});
+		mapped.sort(function(a,b){
+			if(a.value>b.value||a.value == b.value){
+				return -1;
+			}
+			if(a.value<b.value){
+				return 1;
+			}
+		});
+		var res = mapped.map(function(el){
+			return arrTwo[el.index];
+		});
+		console.log(res);
+		
+		var arr = [
+				    {
+				        id: 1,
+				        name: 'candy',
+				        value: 40
+				    }, {
+				        id: 2,
+				        name: 'Simon',
+				        value: 50
+				    }, {
+				        id: 3,
+				        name: 'Tony',
+				        value: 45
+				    }, {
+				        id: 4,
+				        name: 'Annie',
+				        value: 60
+				    }
+				];
+				//将上面数组分别按元素对象的value值从小到大进行排序后输出
+		arr.sort(function(a,b){
+			if(a.value>b.value){
+				return 1;
+			}
+			if(a.value<b.value||a.value==b.value) {
+				return -1;
+			}
+		});
+		console.log(arr);
+		//对象和数组之间的相互转换
+		var scoreObj = {
+			    "Tony": {
+			        "Math": 95,
+			        "English": 79,
+			        "Music": 68
+			    }, 
+			    "Simon": {
+			        "Math": 100,
+			        "English": 95,
+			        "Music": 98
+			    }, 
+			    "Annie": {
+			        "Math": 54,
+			        "English": 65,
+			        "Music": 88
+			    }
+			}
+		var arr = [];
+        for(key in scoreObj){
+            arr.push(key);   
+        }
+        var arrK = [];
+        for(key in scoreObj){
+            arrK.push(scoreObj[key]);
+        }
+        var mapped = arrK.map(function(el,i){
+            var newArr = [];
+            for(key in el){
+                newArr.push(el[key]);
+            }
+            return newArr;
+        });
+       for(var i=0,len=arr.length;i<len;i++){
+           mapped[i].unshift(arr[i]);
+       }
+       console.log(mapped);	
+       
+
+	</script>
+</body>
+</html>

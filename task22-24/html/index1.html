@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>22-24</title>
+	<style>
+		.isNum{
+			margin-top:10px;
+		}
+		p {
+			font-size:19px; color: #8cc540; font-weight: 800;
+		}
+		.first>button+button {
+			margin-top:10px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+    <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a" onclick="my(num1.value)"></label><input id="num-a" type="text"><br>
+    <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b" onclick="my(num2.value)"></label><input id="num-b" type="text">
+	</div>
+	<div class="first">
+    <button class="isNum">判断当前选中的输入框输入内容是否为数字</button><br>
+    <button onclick="myFix()">把 A 四舍五入为 B 个小数位数的数字</button><br>
+    <button onclick="myAbs()">当前选中数字的绝对值</button><br>
+    <button onclick="myCeil()">对当前选中的数字进行上舍入</button><br>
+    <button onclick="myFlo()">对当前选中的数字进行下舍入</button><br>
+    <button onclick="myRou()">把当前选中的数字四舍五入为最接近的整数</button><br>
+    <button onclick="myMax()">返回 A 和 B 中的最高值</button><br>
+    <button onclick="myMin()">返回 A 和 B 中的最低值</button><br>      
+	</div>
+	<p id="result">结果</p>
+	<script>
+		/*
+		按照HTML中按钮的描述以此实现功能
+		计算结果显示在 id 为 result 的 P 标签中
+		除了第一个按钮，其它按钮操作时，都需要判断输入是否为数字，否则在 console 中输出错误信息
+		*/
+		var radio1 = document.getElementById('radio-a');
+		var radio2 = document.getElementById('radio-b'); 
+		var num1 = document.getElementById('num-a');
+		var num2 = document.getElementById('num-b');
+		var result = document.getElementById('result');  
+		var a = 5; 
+		function my(val) {
+			if(val == "") {
+				console.log('请输入内容');				
+			}else if(isNaN(val)) {
+				console.log('不是数字');				
+			}		
+		}
+		/*
+		type="radio" 真实 有选中或者没有选中的情况 点击事件发生后 存在情况： 选择了第一个 选择了第二个 两个都没选择 
+		*/
+		function myFix() {
+			if(num1.value==""||num2.value=="") {
+				console.log('请输入信息')
+			}else if(isNaN(num1.value)||isNaN(num2.value)) {
+				console.log("请输入数字")
+			}else {
+				var a = Number(num1.value);
+				var b = Number(num2.value);
+				var text = a.toFixed(b);
+				result.innerHTML = "A 四舍五入为 B 个小数位数的数字: " + text;
+			}
+		}
+		function myAbs() {
+			var valA = num1.value;
+			var valB = num2.value;
+			if(radio1.checked) {
+				if(valA=="") {
+					console.log('请输入信息')	
+				}else if(isNaN(valA)) {
+					console.log("请输入数字")
+				}else {
+					var text = Math.abs(valA);
+					result.innerHTML = "当前选中数字的绝对值: " + text;
+				}
+			}else if(radio2.checked) {
+				if(valB=="") {
+					console.log('请输入信息')	
+				}else if(isNaN(valB)) {
+					console.log("请输入数字")
+				}else {
+					var text = Math.abs(valB);
+					result.innerHTML = "当前选中数字的绝对值: " + text;
+				}
+			}else {
+				console.log('请选中一个选项');
+			}			
+		}
+		function myCeil() {
+			var valA = num1.value;
+			var valB = num2.value;
+			if(radio1.checked) {
+				if(valA=="") {
+					console.log('请输入信息')	
+				}else if(isNaN(valA)) {
+					console.log("请输入数字")
+				}else {
+					var text = Math.ceil(valA);
+					result.innerHTML = "对当前选中的数字进行上舍入: " + text;
+				}
+			}else if(radio2.checked) {
+				if(valB=="") {
+					console.log('请输入信息')	
+				}else if(isNaN(valB)) {
+					console.log("请输入数字")
+				}else {
+					var text = Math.ceil(valB);
+					result.innerHTML = "对当前选中的数字进行上舍入: " + text;
+				}
+			}else {
+				console.log('请选中一个选项');
+			}
+		}
+		function myFlo() {
+			var valA = num1.value;
+			var valB = num2.value;
+			if(radio1.checked) {
+				if(valA=="") {
+					console.log('请输入信息')	
+				}else if(isNaN(valA)) {
+					console.log("请输入数字")
+				}else {
+					var text = Math.floor(valA);
+					result.innerHTML = "对当前选中的数字进行下舍入: " + text;
+				}
+			}else if(radio2.checked) {
+				if(valB=="") {
+					console.log('请输入信息')	
+				}else if(isNaN(valB)) {
+					console.log("请输入数字")
+				}else {
+					var text = Math.floor(valB);
+					result.innerHTML = "对当前选中的数字进行下舍入: " + text;
+				}
+			}else {
+				console.log('请选中一个选项');
+			}
+		}
+		function myRou() {
+			var valA = num1.value;
+			var valB = num2.value;
+			if(radio1.checked) {
+				if(valA=="") {
+					console.log('请输入信息')	
+				}else if(isNaN(valA)) {
+					console.log("请输入数字")
+				}else {
+					var text = Math.round(valA);
+					result.innerHTML = "把当前选中的数字四舍五入为最接近的整数: " + text;
+				}
+			}else if(radio2.checked) {
+				if(valB=="") {
+					console.log('请输入信息')	
+				}else if(isNaN(valB)) {
+					console.log("请输入数字")
+				}else {
+					var text = Math.round(valB);
+					result.innerHTML = "把当前选中的数字四舍五入为最接近的整数: " + text;
+				}
+			}else {
+				console.log('请选中一个选项');
+			}
+		}
+		function myMax() {
+			if(num1.value==""||num2.value=="") {
+				console.log('请输入信息')
+			}else if(isNaN(num1.value)||isNaN(num2.value)) {
+				console.log("请输入数字")
+			}else {
+				var text = Math.max(num1.value,num2.value);
+				result.innerHTML = "返回 A 和 B 中的最高值: " + text;
+			}	
+		}
+		function myMin() {
+			if(num1.value==""||num2.value=="") {
+				console.log('请输入信息')
+			}else if(isNaN(num1.value)||isNaN(num2.value)) {
+				console.log("请输入数字")
+			}else {
+				var text = Math.min(num1.value,num2.value);
+				result.innerHTML = "返回 A 和 B 中的最低值: " + text;
+			}	
+		}
+	</script>
+</body>
+</html>
