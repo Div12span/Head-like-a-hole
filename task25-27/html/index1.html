@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test GO()</title>
+</head>
+<body>
+	<script>
+		function Go() {
+			console.log("Go");
+		}
+		function GoStep(n) {
+			while(n === undefined||Number(n)==1) {
+				Go();
+				return;
+			}
+			while(isNaN(n)||Number(n)==0||n<0) {
+				return;
+			}			
+			var num = parseInt(n);
+			for(var i=0;i<num;i++) {
+				Go();
+			}
+		}
+		GoStep(10);
+		GoStep(1);
+		GoStep();
+		GoStep(0);
+		GoStep(-1);
+		GoStep(1.4);
+		GoStep(1.6);
+		GoStep(true);
+		GoStep(false);
+		GoStep("Test");
+		GoStep(NaN);
+		GoStep(null);
+	</script>
+</body>
+</html>

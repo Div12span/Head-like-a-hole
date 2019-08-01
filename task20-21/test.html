@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <select id="year-select">
+        <option value="">请选择年份</option>
+
+    </select>
+
+    <select id="month-select">
+        <option value=" ">请选择月份</option>
+
+    </select>
+
+    <select id="day-select">
+        <option value=" ">请选择日期</option>
+
+    </select>
+
+    <select id="hour-select">
+        <option value=" ">请选择小时</option>
+
+    </select>
+
+    <select id="minute-select">
+        <option value=" ">请选择分钟</option>
+
+    </select>
+
+    <select id="second-select">
+        <option value=" ">请选择秒数</option>
+
+    </select>
+
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+    <script>
+        var year = document.getElementById("year-select");
+        var month = document.getElementById("month-select");
+        var day = document.getElementById("day-select");
+        var hour = document.getElementById("hour-select");
+        var minute = document.getElementById("minute-select");
+        var second = document.getElementById("second-select");
+        var result = document.getElementById("result-wrapper");
+
+        function startTime() {
+            var x = new Date();
+            var y = x.getFullYear();
+            for (i = (y - 30); i < (y + 30); i++) {
+                year.options.add(new Option(i + "年", i));
+            }
+            for (i = 1; i < 13; i++) {
+                month.options.add(new Option(i + "月", i));
+            }
+            for (i = 0; i < 24; i++) {
+                hour.options.add(new Option(i + "时", i));
+            }
+            for (i = 0; i < 60; i++) {
+                minute.options.add(new Option(i + "分", i));
+            }
+            for (i = 0; i < 60; i++) {
+                second.options.add(new Option(i + "秒", i));
+            }
+            //这样是局部变量私有的数组    var Days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            Days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //这才是全局变量
+        }
+
+        function addZero(a) {
+            if (a < 10) {
+                a = "0" + a;
+            }
+            return a;
+        }
+
+        function getWeekday(weekday) {
+            var arr = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            return arr[weekday];
+        }
+
+        function optionsClear(e) {
+            e.options.length = 1;
+        }
+
+        function writeDay(n) {
+            optionsClear(day); //清除原来已有的数组
+            for (i = 1; i < n + 1; i++) {
+                day.options.add(new Option(i + "日", i));
+            }
+        }
+
+        function isLeapYear(year) {
+            return ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0);
+        }
+
+        year.onchange = function () {
+            var MMvalue = month.options[month.selectedIndex].value;
+            var n = Days[MMvalue - 1];
+            if (MMvalue == 2 && isLeapYear(year.value)) //判断是否为闰年，是的话2月份+1天。
+                n++;
+            writeDay(n);
+        }
+        month.onchange = function () {
+            var YYvalue = year.options[year.selectedIndex].value;
+            var n = Days[month.value - 1];
+            if (month.value == 2 && isLeapYear(YYvalue))
+                n++;
+            writeDay(n);
+        }
+        if (document.attachEvent) {
+            window.attachEvent("onload", startTime);
+        } else {
+            window.addEventListener("load", startTime);
+        }
+
+        function getTimeSelect() {
+            var str = year.value + "/" + month.value + "/" + day.value;
+            var timeselect = new Date(str);
+            return year.value + "年" + month.value + "月" + day.value + "日" + getWeekday(timeselect.getDay()) + hour.value +
+                ":" + minute.value + ":" + second.value;
+        }
+
+        function getTimeDistance() {
+            var now = new Date();
+            var timeSelectStr = year.value + "/" + month.value + "/" + day.value + " " + hour.value + ":" + minute.value +
+                ":" + second.value;
+            var selectTime = new Date(timeSelectStr);
+            var secondDistance = now.getTime() - selectTime.getTime();
+            if (secondDistance < 0) {
+                secondDistance = -secondDistance; //转换为正整数方便计算
+                var str = "还有";
+            } else {
+                var str = "已经过去"
+            }
+            var daym = secondDistance / 86400000;
+            var hourm = (secondDistance % 86400000) / 3600000;
+            var minutem = ((secondDistance % 86400000) % 3600000) / 60000;
+            var secondm = (((secondDistance % 86400000) % 3600000) % 60000) / 1000;
+            return str + parseInt(daym) + "天" + parseInt(hourm) + "小时" + parseInt(minutem) + "分" + parseInt(secondm) +
+                "秒";
+        }
+
+        function showDate() {
+            result.innerHTML = "现在距离" + getTimeSelect() + getTimeDistance();
+        }
+        setInterval(showDate, 1000);
+
+    </script>
+</body>
+
+</html>

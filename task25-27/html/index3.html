@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<select id="year-select">
+		<option value="">请选择年份</option>		
+	</select>
+	<select id="month-select">
+        <option value="">请选择月份</option>
+    </select>
+    <select id="day-select">
+        <option value="">请选择日期</option>
+    </select>
+    <select id="hour-select">
+        <option value="">请选择小时</option>
+    </select>
+    <select id="minutes-select">
+        <option value="">请选择分钟</option>
+    </select>
+    <select id="seconds-select">
+        <option value="">请选择秒数</option>
+    </select>
+    <p id="result">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+    <script>
+    	var year = document.getElementById("year-select");
+    	var month = document.getElementById("month-select");
+    	var day = document.getElementById("day-select");
+    	var hour = document.getElementById("hour-select");
+    	var minutes = document.getElementById("minutes-select");
+    	var seconds = document.getElementById("seconds-select");
+    	var result = document.getElementById("result");
+    	
+    	function startTime() {
+    		var now = new Date;
+    		var numYear = now.getFullYear();
+    		for(var i =numYear -12;i<(numYear + 13);i++) {
+    		year.options.add(new Option(i,i))
+    		}
+    		for(var j = 1;j < 13 ;j++) {
+    		month.options.add(new Option(j,j))
+    		}
+    		for(var i = 0;i < 24 ;i++) {
+    		hour.options.add(new Option(i,i))
+    		}
+    		for(var i = 0;i < 60 ;i++) {
+    		minutes.options.add(new Option(i,i))
+    		}
+    		for(var i = 0;i < 60 ;i++) {
+    		seconds.options.add(new Option(i,i))
+    		}    		
+    	}
+    	function addZero(i) {
+    		if(i<10) {
+    			i = "0" + i;
+    		}
+    		return i;
+    	}
+    	function dayClear(x) {
+    		x.length = 1;
+    	}
+    	var Days = [31,28,31,30,31,30,31,31,30,31,30,31];
+    	function isLeap(y) {	
+    		return ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0);
+    	}
+    	function addDay(a) {
+    		dayClear(day.options);
+    		for(var i = 1; i < a + 1; i++) {
+    			day.options.add(new Option(i,i))
+    		}
+    	}
+    	    	
+    	year.onchange = function() {
+    		var Mvalue = month.options[month.selectedIndex].value;
+    		var n = Days[Mvalue - 1];
+    		if(Mvalue == 2 && isLeap(year.value)) {
+    			n++;
+    		}
+    		addDay(n);
+    	}
+    	month.onchange = function () {
+    		var Yyear = year.options[year.selectedIndex].value;
+    		var n = Days[month.value - 1];   
+    		if(month.value == 2 && isLeap(Yyear)) {
+    			n++;
+    		}
+    		addDay(n);		
+    	}
+    	if(document.attachEvent) {
+			window.attachEvent('onload',statTime);
+		}else {
+			window.addEventListener('load',startTime);
+		}
+		var arr = ['星期一','星期二','星期三','星期四','星期五','星期六','星期日']
+		function whatDay() {
+			var s = year.value + "/" + month.value + "/" + day.value;
+			var week = new Date(s);
+			var index = week.getDay();
+			var wd = arr[index];
+			return wd;
+		}
+		function selectTime() {
+			
+			var strSelect = year.value + "年" + addZero(month.value) + "月" + addZero(day.value) + "日" + " " + whatDay() + " " + addZero(hour.value) + ":" + addZero(minutes.value) + ":" + addZero(seconds.value) + " ";
+			return strSelect;
+		}
+		function distanceTime() {
+			var now = new Date();
+			var str = year.value + "/" + month.value + "/" + day.value + " " + hour.value + ":" + minutes.value + ":" + seconds.value;
+			var sleTime = new Date(str);
+			var disTime = sleTime.getTime() - now.getTime();
+			if(disTime<0) {
+				var concatStr = "已经过去 ";
+				disTime = -disTime;
+			} else {
+				var concatStr = "还有 ";
+			}
+			var distanceDay = parseInt(disTime  / 86400000);
+			var distancehour = parseInt((disTime  % 86400000) / 3600000);
+			var distanceMinu = parseInt((disTime  % 86400000 % 3600000) / 60000); 
+			var distanceSec = parseInt((disTime  % 86400000 % 3600000 % 60000) / 1000);			
+			var res = concatStr + addZero(distanceDay) + "天" + addZero(distancehour) + "小时"  + addZero(distanceMinu) + "分" + addZero(distanceSec) + "秒";
+			return res;
+		}
+		function showTime() {
+			result.innerHTML = "现在距离" + selectTime() + distanceTime();
+		}
+		setInterval(showTime,1000);
+    </script>
+</body>
+</html>

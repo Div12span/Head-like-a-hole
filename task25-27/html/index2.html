@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Date试验</title>
+	<style>
+		h3{
+			letter-spacing: 0.5px;
+			font-weight: 500;
+		}
+	</style>
+</head>
+<body>
+	<h3>现在的时间是</h3>
+	<h3></h3>
+	<script>		
+		var resDay = document.getElementsByTagName('h3')[0];		
+		/*  月日时 星期几 格式
+		function showDay() {
+			var now = new Date();					
+			var year = now.getFullYear();
+			var month =  now.getMonth() + 1;
+			month = addZero(month);
+			var date = now.getDate();
+			date = addZero(date);
+			var day = now.getDay();  
+			day = dayChinese(day);
+			var hour =  now.getHours();
+			hour = addZero(hour);
+			var minutes =  now.getMinutes();
+			minutes = addZero(minutes);
+			var seconds =  now.getSeconds();
+			seconds = addZero(seconds);
+			resDay.innerHTML = year + "年 " + month + "月 " + date + "日 " + day + " " + hour + ":" + minutes + ":" + seconds;
+			while(minutes == 59) {
+				clearInterval(timer);
+			} 
+		}*/		
+		
+		// 另一种格式
+		function showDay() {
+			var now = new Date();					
+			var year = now.getFullYear();
+			var month =  now.getMonth() + 1;
+			month = addZero(month);
+			var date = now.getDate();
+			date = addZero(date);
+			var day = now.getDay();  
+			day = dayEnglish(day);
+			var hour =  now.getHours();
+			hour = addZero(hour);
+			var str;
+			str = timeInfo(hour);
+			var minutes =  now.getMinutes();
+			minutes = addZero(minutes);
+			var seconds =  now.getSeconds();
+			seconds = addZero(seconds);
+			resDay.innerHTML = year + "-" + month + "-" + date +" " + day + " " + hour + ":" + minutes + ":" + seconds + " " + str;
+			while(minutes == 12) {
+				clearInterval(timer);
+			} 
+		}
+		timer = setInterval(showDay,60);
+		function dayChinese(a) {
+			switch(a) {
+				case 0 : a = "星期日";
+				break;
+				case 1 : a = "星期一";
+				break;
+				case 2 : a = "星期二";
+				break;
+				case 3 : a = "星期三";
+				break;
+				case 4 : a = "星期四";
+				break;
+				case 5 : a = "星期五";
+				break;
+				case 6 : a = "星期六";
+				break;
+			}
+			return a;
+		}
+		function dayEnglish(a) {
+			switch(a) {
+				case 0 : a = "Sunday";
+				break;
+				case 1 : a = "Monday";
+				break;
+				case 2 : a = "Tuesday";
+				break;
+				case 3 : a = "Wednesday";
+				break;
+				case 4 : a = "Thursday";
+				break;
+				case 5 : a = "Friday";
+				break;
+				case 6 : a = "Saturday";
+				break;
+			}
+			return a;
+		}
+		function addZero(i) {
+			if(i<10){
+				i = "0" + i;
+			}
+			return i;
+		}
+		function timeInfo(num) {
+			var str = "";
+			if(num<12) {
+				str += "AM";
+			}
+			if(num>12&&num<24) {
+				str += "PM";
+			}
+			return str;
+		}
+	</script>
+</body>
+</html>
